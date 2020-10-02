@@ -81,7 +81,6 @@ export default class LocalVideo extends SmallVideo {
             <span id = 'localVideoWrapper'></span>
             <div class = 'videocontainer__toolbar'></div>
             <div class = 'videocontainer__toptoolbar'></div>
-            <div class = 'videocontainer__hoverOverlay'></div>
             <div class = 'displayNameContainer'></div>
             <div class = 'avatar-container'></div>`;
 
@@ -96,8 +95,8 @@ export default class LocalVideo extends SmallVideo {
     updateDisplayName() {
         if (!this.container) {
             logger.warn(
-                    `Unable to set displayName - ${this.videoSpanId
-                    } does not exist`);
+                `Unable to set displayName - ${this.videoSpanId
+                } does not exist`);
 
             return;
         }
@@ -206,7 +205,7 @@ export default class LocalVideo extends SmallVideo {
                     callback: () => {
                         const { store } = APP;
                         const val = !store.getState()['features/base/settings']
-                        .localFlipX;
+                            .localFlipX;
 
                         this.setFlipX(val);
                         store.dispatch(updateSettings({
@@ -266,10 +265,10 @@ export default class LocalVideo extends SmallVideo {
             = getLocalVideoTrack(APP.store.getState()['features/base/tracks']);
 
         ReactDOM.render(
-            <Provider store = { APP.store }>
+            <Provider store={APP.store}>
                 <VideoTrack
-                    id = 'localVideo_container'
-                    videoTrack = { videoTrack } />
+                    id='localVideo_container'
+                    videoTrack={videoTrack} />
             </Provider>,
             localVideoContainer
         );

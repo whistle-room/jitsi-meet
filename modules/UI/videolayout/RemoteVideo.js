@@ -43,7 +43,6 @@ function createContainer(spanId) {
         <div class = 'videocontainer__background'></div>
         <div class = 'videocontainer__toptoolbar'></div>
         <div class = 'videocontainer__toolbar'></div>
-        <div class = 'videocontainer__hoverOverlay'></div>
         <div class = 'displayNameContainer'></div>
         <div class = 'avatar-container'></div>
         <div class ='presence-label-container'></div>
@@ -202,19 +201,19 @@ export default class RemoteVideo extends SmallVideo {
         }
 
         ReactDOM.render(
-            <Provider store = { APP.store }>
-                <I18nextProvider i18n = { i18next }>
-                    <AtlasKitThemeProvider mode = 'dark'>
+            <Provider store={APP.store}>
+                <I18nextProvider i18n={i18next}>
+                    <AtlasKitThemeProvider mode='dark'>
                         <RemoteVideoMenuTriggerButton
-                            initialVolumeValue = { initialVolumeValue }
-                            isAudioMuted = { this.isAudioMuted }
-                            menuPosition = { remoteMenuPosition }
+                            initialVolumeValue={initialVolumeValue}
+                            isAudioMuted={this.isAudioMuted}
+                            menuPosition={remoteMenuPosition}
                             onMenuDisplay
-                                = {this._onRemoteVideoMenuDisplay.bind(this)}
-                            onRemoteControlToggle = { onRemoteControlToggle }
-                            onVolumeChange = { onVolumeChange }
-                            participantID = { participantID }
-                            remoteControlState = { remoteControlState } />
+                            ={this._onRemoteVideoMenuDisplay.bind(this)}
+                            onRemoteControlToggle={onRemoteControlToggle}
+                            onVolumeChange={onVolumeChange}
+                            participantID={participantID}
+                            remoteControlState={remoteControlState} />
                     </AtlasKitThemeProvider>
                 </I18nextProvider>
             </Provider>,
@@ -557,11 +556,11 @@ export default class RemoteVideo extends SmallVideo {
 
         if (presenceLabelContainer) {
             ReactDOM.render(
-                <Provider store = { APP.store }>
-                    <I18nextProvider i18n = { i18next }>
+                <Provider store={APP.store}>
+                    <I18nextProvider i18n={i18next}>
                         <PresenceLabel
-                            participantID = { this.id }
-                            className = 'presence-label' />
+                            participantID={this.id}
+                            className='presence-label' />
                     </I18nextProvider>
                 </Provider>,
                 presenceLabelContainer);
