@@ -47,19 +47,19 @@ export function shouldRemoteVideosBeVisible(state: Object) {
     return Boolean(
         participantCount > 2
 
-            // Always show the filmstrip when there is another participant to
-            // show and the filmstrip is hovered, or local video is pinned, or
-            // the toolbar is displayed.
-            || (participantCount > 1
-                && (state['features/filmstrip'].hovered
-                    || state['features/toolbox'].visible
-                    || ((pinnedParticipant = getPinnedParticipant(state))
-                        && pinnedParticipant.local)))
+        // Always show the filmstrip when there is another participant to
+        // show and the filmstrip is hovered, or local video is pinned, or
+        // the toolbar is displayed.
+        || (participantCount > 1
+            && (state['features/filmstrip'].hovered
+                || state['features/toolbox'].visible
+                || ((pinnedParticipant = getPinnedParticipant(state))
+                    && pinnedParticipant.local)))
 
-            || (typeof interfaceConfig === 'object'
-                && interfaceConfig.filmStripOnly)
+        || (typeof interfaceConfig === 'object'
+            && interfaceConfig.filmStripOnly)
 
-            || state['features/base/config'].disable1On1Mode);
+        || state['features/base/config'].disable1On1Mode);
 }
 
 /**
@@ -99,11 +99,11 @@ export function calculateThumbnailSizeForTileView({
 }: Object) {
     // The distance from the top and bottom of the screen, as set by CSS, to
     // avoid overlapping UI elements.
-    const topBottomPadding = 200;
+    const topBottomPadding = 50;
 
     // Minimum space to keep between the sides of the tiles and the sides
     // of the window.
-    const sideMargins = 30 * 2;
+    const sideMargins = 10 * 2;
 
     const verticalMargins = visibleRows * 10;
     const viewWidth = clientWidth - sideMargins;
