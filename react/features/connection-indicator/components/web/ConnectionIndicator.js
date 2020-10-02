@@ -439,12 +439,13 @@ export function _mapStateToProps(state: Object, ownProps: Props) {
         state['features/base/tracks'], MEDIA_TYPE.VIDEO, ownProps.participantId);
     const firstAudioTrack = getTrackByMediaTypeAndParticipant(
         state['features/base/tracks'], MEDIA_TYPE.AUDIO, ownProps.participantId);
+    const conference = state['features/base/conference'].conference;
 
-    return {
+    return conference ? {
         audioSsrc: firstAudioTrack
-            ? state['features/base/conference'].conference.getSsrcByTrack(firstAudioTrack.jitsiTrack) : undefined,
+            ? conference.getSsrcByTrack(firstAudioTrack.jitsiTrack) : undefined,
         videoSsrc: firstVideoTrack
-            ? state['features/base/conference'].conference.getSsrcByTrack(firstVideoTrack.jitsiTrack) : undefined
-    };
+            ? conference.getSsrcByTrack(firstVideoTrack.jitsiTrack) : undefined
+    } : { };
 }
 export default translate(connect(_mapStateToProps, _mapDispatchToProps)(ConnectionIndicator));
